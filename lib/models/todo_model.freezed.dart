@@ -22,7 +22,7 @@ TodoModel _$TodoModelFromJson(Map<String, dynamic> json) {
 mixin _$TodoModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   int get category => throw _privateConstructorUsedError;
   String get memo => throw _privateConstructorUsedError;
   bool get delflg => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $TodoModelCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      DateTime date,
+      DateTime? date,
       int category,
       String memo,
       bool delflg});
@@ -62,7 +62,7 @@ class _$TodoModelCopyWithImpl<$Res, $Val extends TodoModel>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? date = null,
+    Object? date = freezed,
     Object? category = null,
     Object? memo = null,
     Object? delflg = null,
@@ -76,10 +76,10 @@ class _$TodoModelCopyWithImpl<$Res, $Val extends TodoModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      date: null == date
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -106,7 +106,7 @@ abstract class _$$_TodoModelCopyWith<$Res> implements $TodoModelCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      DateTime date,
+      DateTime? date,
       int category,
       String memo,
       bool delflg});
@@ -125,7 +125,7 @@ class __$$_TodoModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? date = null,
+    Object? date = freezed,
     Object? category = null,
     Object? memo = null,
     Object? delflg = null,
@@ -139,10 +139,10 @@ class __$$_TodoModelCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      date: null == date
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -163,27 +163,32 @@ class __$$_TodoModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TodoModel implements _TodoModel {
   _$_TodoModel(
-      {required this.id,
-      required this.title,
-      required this.date,
-      required this.category,
-      required this.memo,
-      required this.delflg});
+      {this.id = 0,
+      this.title = '',
+      this.date,
+      this.category = 1,
+      this.memo = '',
+      this.delflg = false});
 
   factory _$_TodoModel.fromJson(Map<String, dynamic> json) =>
       _$$_TodoModelFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final String title;
   @override
-  final DateTime date;
+  final DateTime? date;
   @override
+  @JsonKey()
   final int category;
   @override
+  @JsonKey()
   final String memo;
   @override
+  @JsonKey()
   final bool delflg;
 
   @override
@@ -226,12 +231,12 @@ class _$_TodoModel implements _TodoModel {
 
 abstract class _TodoModel implements TodoModel {
   factory _TodoModel(
-      {required final int id,
-      required final String title,
-      required final DateTime date,
-      required final int category,
-      required final String memo,
-      required final bool delflg}) = _$_TodoModel;
+      {final int id,
+      final String title,
+      final DateTime? date,
+      final int category,
+      final String memo,
+      final bool delflg}) = _$_TodoModel;
 
   factory _TodoModel.fromJson(Map<String, dynamic> json) =
       _$_TodoModel.fromJson;
@@ -241,7 +246,7 @@ abstract class _TodoModel implements TodoModel {
   @override
   String get title;
   @override
-  DateTime get date;
+  DateTime? get date;
   @override
   int get category;
   @override

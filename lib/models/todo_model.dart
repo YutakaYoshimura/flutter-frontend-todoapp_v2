@@ -6,12 +6,12 @@ part 'todo_model.g.dart';
 @freezed
 abstract class TodoModel with _$TodoModel {
   factory TodoModel({
-    required int id,
-    required String title,
-    required DateTime date,
-    required int category,
-    required String memo,
-    required bool delflg
+    @Default(0) int id,
+    @Default('') String title,
+    DateTime? date,
+    @Default(1) int category,
+    @Default('') String memo,
+    @Default(false) bool delflg
   }) = _TodoModel;
 
   factory TodoModel.fromJson(Map<String, dynamic> json) => _$TodoModelFromJson(json);

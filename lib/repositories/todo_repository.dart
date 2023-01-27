@@ -14,4 +14,14 @@ class TodoRepository {
         .toList();
     });
   }
+
+  Future<dynamic> add(TodoModel todo) async {
+    return _todoApiClient.add(todo).then((value) {
+      return true;
+      // APIで返ってきたJSONをモデルに変換
+      // return value
+      //   .map((e) => TodoModel.fromJson(e as Map<String, dynamic>))
+      //   .toList();
+    });
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './todo_list_page_app_bar.dart';
 import './todo_list_page_body.dart';
+import './todo_list_page_floating_action_button.dart';
 
 class TodoListPage extends StatelessWidget {
   const TodoListPage({
@@ -14,6 +15,7 @@ class TodoListPage extends StatelessWidget {
       appBar: TodoListPageAppBar(),
       body: TodoListPageBody(),
       backgroundColor: Colors.white,
+      floatingActionButton: TodoListPageFloatingActionButton(),
     );
   }
 }

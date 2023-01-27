@@ -32,6 +32,17 @@ class TodoListViewModel extends StateNotifier<AsyncValue<List<TodoModel>>> {
     }
   }
 
+  Future<void> add({bool isLoadMore = false}) async {
+    try{
+      final data = await _todoRepository.add(todo);
+      state = AsyncData([
+        if (isLoadMore) ...state.value ?? [], ...data
+      ]);
+    } catch (error, stacktrace) {
+      state = AsyncError(error, stacktrace);
+    }
+  }
+
   void loadMore() {
     // ローディング中にローディングしないようにする
     if (state == const AsyncLoading<List<TodoModel>>().copyWithPrevious(state)) {

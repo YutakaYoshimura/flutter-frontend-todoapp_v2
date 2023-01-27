@@ -6,8 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:todoapp_v2/views/todoDetailPage/todo_detail_page.dart';
 
 import './views/TopPage/top_page.dart';
-import 'views/todoListPage/todo_list_page.dart';
+import './views/todoListPage/todo_list_page.dart';
 import './views/todoDetailPage/todo_detail_page.dart';
+import './models/todo_model.dart';
 
 Future<void> main() async {
   runApp(ProviderScope(child: TodoApp()));
@@ -15,9 +16,9 @@ Future<void> main() async {
 
 class TodoApp extends StatelessWidget {
   TodoApp({Key? key}) : super(key: key);
-
+  
   final _router = GoRouter(
-    initialLocation: '/todo_list',
+    initialLocation: '/',
     routes: [
       GoRoute(
         path: '/',
@@ -29,7 +30,10 @@ class TodoApp extends StatelessWidget {
             routes: [
               GoRoute(
                 path: "todo_detail",
-                builder: (BuildContext context, GoRouterState state) => const TodoDetailPage(),
+                builder: (BuildContext context, GoRouterState state) {
+                  TodoModel todo = state.extra as TodoModel;
+                  return TodoDetailPage(todo: todo);
+                }
               ),
             ],
           ),

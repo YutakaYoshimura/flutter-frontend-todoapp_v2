@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:todoapp_v2/models/todo_model.dart';
 
 import '../constant/url.dart';
 
@@ -13,4 +14,7 @@ abstract class TodoApiClient {
 
   @GET('')
   Future<dynamic> getAll();
+
+  @POST('')
+  Future<dynamic> add(@Body() Map<String,dynamic> body);
 }
